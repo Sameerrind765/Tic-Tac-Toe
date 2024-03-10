@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div>
+            <h1 class="head centerDiv">
+                <img src="pngegg.png" class="logo" alt="">
+                TIC TAC TOE
+            </h1>
+        </div>
+    </header>
+    <div>
+        <div class="players centerDiv">
+            <div class="player1 player centerDiv">Player 1</div>
+            <div class="vs centerDiv">VS</div>
+            <div class="player2 player centerDiv">Player 2</div>
+        </div>
+        <div class="centerDiv">
+            <div>
+                <button type="reset" id="reset-btn" class="centerDiv player">reset button</button>
+            </div>
+        <div class="boardContainer">
+           <div row="1" cols="1" id="1" class="tickBox">o</div>
+           <div row="1" cols="2" id="2" class="tickBox">x</div>
+           <div row="1" cols="3" id="3" class="tickBox">x</div>
+           <div row="2" cols="1" id="4" class="tickBox">x</div>
+           <div row="2" cols="2" id="5" class="tickBox">o</div>
+           <div row="2" cols="3" id="6" class="tickBox">o</div>
+           <div row="3" cols="1" id="7" class="tickBox">x</div>
+           <div row="3" cols="2" id="8" class="tickBox">o</div>
+           <div row="3" cols="3" id="9" class="tickBox">o</div> 
+        </div>
+    </div>
+        <div class="logs" id="playerLogs">logs</div>
+    </div>
+    <footer>
+
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

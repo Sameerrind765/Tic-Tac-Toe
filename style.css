@@ -1,0 +1,121 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Kdam+Thmor+Pro&family=Lilita+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lilita+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=EB+Garamond:ital,wght@0,600;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anta&display=swap'); */
+*{
+    background-color: #B1D0E0;
+}
+.centerDiv{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+#reset-btn{
+    margin-left: -388px;
+    margin-right: 90px;
+}
+.logo{
+    width: 70px;
+    margin: 0 6px 0 0;
+    background-color: var(--head-foot-color);
+}
+.head{
+        font-family: "Lilita One", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    /* font-family: "Abril Fatface", serif;
+    font-weight: 400;
+    font-style: normal; */
+    /* font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal; */
+    background-color: var(--head-foot-color);
+    height: 110px;
+    margin: 0px;
+    border-radius: 10px;
+    font-size: 80px;
+    color: white;
+}
+.players{
+    font-family: "Kdam Thmor Pro", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: white;
+    margin: 14px 0;
+}
+.vs{
+    display: flex;
+    background-color: var(--player-color);
+    /* justify-content: space-between; */
+    margin: 0 10px;
+    font-size: 24px;
+    width: 100px;
+    height: 55px;
+    border-radius: 7px;
+}
+.player{
+    display: flex;
+    background-color: var(--player-color);
+    margin: 0 10px;
+    font-size: 24px;
+    width: 300px;
+    height: 62px;
+    border-radius: 7px;
+
+}
+.boardContainer{
+    /* background-color: aqua; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-rows: 1fr 1fr 1fr; */
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    gap: 10px;
+    width: 350px;
+    height: 350px;
+    margin: 19px 0 0 0;
+}
+.tickBox{
+    
+    font-family: "Anta", sans-serif;
+    font-weight: 400;
+    font-style: normal;       
+    display: grid;
+    background-color: #6998AB;
+    width: 76px;
+    height: 76px;
+    font-size: 90px;
+    text-align: center;
+    align-items: center;
+    /* text-align: center; */
+    justify-content: center;
+    border-radius: 24px;
+    margin: 0;
+    padding: 0px 14px 37px 14px;
+}
+.logs{
+    display: flex;
+    background-color: var(--head-foot-color);
+    /* width: ; */
+    height: 60px;
+    border-radius: 10px;
+    margin-top: 19px;
+    font-family: "Kdam Thmor Pro", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: white;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+}
+:root{
+    --player-color: #406882;
+    --head-foot-color: #1A374D;
+}
+.player{
+    font-weight: 900;
+    color: black;
+}
