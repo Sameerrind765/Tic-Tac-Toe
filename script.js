@@ -1,90 +1,128 @@
 let checkboxes = [];
 let reset_btn = document.getElementById("reset-btn");
-
+let logbox = document.getElementById("playerLogs");
+function start(){
+    let start = [pram1,pram2]
+}
+function player_one(){
+    
+}
 let playerO = {
-    name : 'playerO',
-    sign : 'O'
-}
-let playerx = {
-    name : "playerX",
-    sign : 'X'
-}
+    name: 'playerO',
+    sign: 'O'
+};
+let playerX = {
+    name: "playerX",
+    sign: 'X'
+};
 
 let assigncheckboxtoarray = () => {
     let rows = 3;
     let cols = 3;
-    for(let i=1;i<=rows;i++){
-        for(let j=1;j<=cols;j++){
-            let cols = document.querySelector(`[row="${i}"][cols="${j}"]`);
-            checkboxes.push(cols);
+    for (let i = 1; i <= rows; i++) {
+        for (let j = 1; j <= cols; j++) {
+            let col = document.querySelector(`[row="${i}"][cols="${j}"]`);
+            checkboxes.push(col);
         }
-    };
+    }
     return checkboxes;
-}
+};
+
 assigncheckboxtoarray(checkboxes);
+
 let write = (a) => {
-    a.innerHTML = "x";
-}
-console.log(checkboxes);
-checkboxes[1].addEventListener("click", function (){
-    write(checkboxes[1])
-})
+    if (!a.innerHTML) {
+        a.innerHTML = "O";
+    } else {
+        console.log("Already clicked");
+    }
+    gamewon(checkboxes);
+};
 
-let resetBoard = (checkboxes) => {
-    for(let i = 0; i < 9; i++){
-        checkboxes[i].innerHTML = "";
+function addingEventListenerstoarray(array) {
+    for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+        element.addEventListener("click", function () {
+            write(element);
+        });
     }
 }
 
-let test = [];
-function updateValue(){
-    for(let i=0;i<checkboxes.length;i++){
-        test[i] = checkboxes[i].innerHTML;
+function winlog(playerLogs, info){
+    playerLogs.innerHTML = info;
+}
+
+let resetBoard = (checkboxes, playerLogs) => {
+    playerLogs.innerHTML = "";
+    checkboxes.forEach((checkbox) => {
+        checkbox.innerHTML = "";
+    });
+};
+function winlogbox(checkboxes ,n){
+    let winner = checkboxes[n].innerHTML;
+    if(winner === "X"){
+        let info = "X is a winner"
+        winlog(playerLogs, info);
+        console.log(info);
     }
-    // console.log(test);
-    return test;
+    else if(winner === "O"){
+        let info = "O is a winner"
+        winlog(playerLogs, info)
+        console.log(info);
+    }
+    else{
+        let info = "something un exoected happened";
+        winlog(playerLogs, info);
+        console.log("its is not a X or O")
+    }
+    console.log(`Player ${winner} Has Won`);
+}
+function gamewon(win) {
+    let values = win.map((checkbox) => checkbox.innerHTML);
+    if (
+        (values[0] && values[0] === values[1] && values[1] === values[2]) || // first row
+        (values[3] && values[3] === values[4] && values[4] === values[5]) || // second row
+        (values[6] && values[6] === values[7] && values[7] === values[8]) || // third row
+        (values[0] && values[0] === values[3] && values[3] === values[6]) || // first column
+        (values[1] && values[1] === values[4] && values[4] === values[7]) || // second column
+        (values[2] && values[2] === values[5] && values[5] === values[8]) || // third column
+        (values[0] && values[0] === values[4] && values[4] === values[8]) || // first diagonal
+        (values[2] && values[2] === values[4] && values[4] === values[6]) // second diagonal
+    ) {
+        if (values[0] && values[1] && values[2] && values[0] === values[1] && values[1] === values[2]) {
+            winner = values[0];
+            winlogbox(checkboxes,0)
+        } else if (values[3] && values[4] && values[5] && values[3] === values[4] && values[4] === values[5]) {
+            winner = values[3];
+            winlogbox(checkboxes,3)
+        } else if (values[6] && values[7] && values[8] && values[6] === values[7] && values[7] === values[8]) {
+            winner = values[6];
+            winlogbox(checkboxes,6)
+        } else if (values[0] && values[3] && values[6] && values[0] === values[3] && values[3] === values[6]) {
+            winner = values[0];
+            winlogbox(checkboxes,0)
+        } else if (values[1] && values[4] && values[7] && values[1] === values[4] && values[4] === values[7]) {
+            winner = values[1];
+            winlogbox(checkboxes,1)
+        } else if (values[2] && values[5] && values[8] && values[2] === values[5] && values[5] === values[8]) {
+            winner = values[2];
+            winlogbox(checkboxes,2)
+        } else if (values[0] && values[4] && values[8] && values[0] === values[4] && values[4] === values[8]) {
+            winner = values[0];
+            winlogbox(checkboxes,0)
+        } else if (values[2] && values[4] && values[6] && values[2] === values[4] && values[4] === values[6]) {
+            winner = values[2];
+            winlogbox(checkboxes,2)
+        } else{
+            console.log("technical error");
+        };
+        // winlog(logbox);
+    } else {
+        console.log("Game continues");
+    }
 }
 
-function gamewon(win){
-    updateValue();
-    if(win[0] == win[1] && win[1] == win[2]){ // first row
-    console.log("win");
-}
-else if(win[3] == win[4] && win[4] == win[5]){ //second row
-    console.log("win");
-}
-else if(win[6] == win[7] && win[7] == win[8]){ // third row
-    console.log("win");
-}
-else if(win[0] == win[3] && win[3] == win[4]){ //first col 0 3 6
-    console.log("win");
-}
-else if(win[1] == win[4] && win[4] == win[7]){ // sec col 147
-    console.log("win");
-}
-else if(win[2] == win[5] && win[5] == win[8]){ // thir col 258
-    console.log("win");
-}
-else if(win[0] == win[4] && win[4] == win[8]){ //1st diag 048
-    console.log("win");
-}
-else if(win[2] == win[4] && win[4] == win[7]){ //1st diag 247
-    console.log("win");
-}
-else{
-    console.log("game continues")
-}
-    return win;
-}
-
-
-
-
-// console.log(checkboxes);
-// updateValue();
-gamewon(test);
-reset_btn.addEventListener("click", function (){
-    resetBoard(checkboxes)
-})
-// console.log(checkboxes);
-// console.log(test);
+addingEventListenerstoarray(checkboxes);
+reset_btn.addEventListener("click", function () {
+    resetBoard(checkboxes, logbox);
+});
