@@ -155,3 +155,8 @@
     --player-color: #406882;
     --head-foot-color: #1A374D;
 }
+@media only screen and (max-width: 600px){
+    .head{
+        font-size: 47px;
+    }
+}
