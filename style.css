@@ -60,7 +60,7 @@
     display: flex;
     background-color: var(--player-color);
     margin: 0 10px;
-    font-size: 24px;
+    font-size: 40px;
     width: 300px;
     height: 62px;
     border-radius: 7px;
@@ -79,7 +79,7 @@
     gap: 10px;
     width: 350px;
     height: 350px;
-    margin: 19px 0 0 0;
+    margin: 5px 0 0 0;
 }
 .tickBox{
     
@@ -100,9 +100,14 @@
     padding: 0px 14px 37px 14px;
 }
 .logs{
+    width: 100%;
+    left: 0;
+    position: fixed;
+        bottom: 0;
+    text-align: center;
+    bottom: 0px;
     display: flex;
     background-color: var(--head-foot-color);
-    /* width: ; */
     height: 60px;
     border-radius: 10px;
     margin-top: 19px;
@@ -118,7 +123,13 @@
     font-weight: 900;
     color: black;
 }
-.player1 > span {
+.xImg{
+    height: 55px;
+    width: auto;
+    margin-left: 10px;
+    background-color: var(--player-color);
+}
+.current_Player{
   font-family: "Baloo Thambi 2", system-ui;
   font-optical-sizing: auto;
   /* font-weight: ; */
@@ -135,28 +146,36 @@
     text-shadow: none;
     }
 }
-/* .player > span:nth-child(1){
-    animation-delay: 0.00s;
- }
-.player > span:nth-child(2){
-    animation-delay: .10s;
-}.player > span:nth-child(3){
-    animation-delay: 0.20s;
-}.player > span:nth-child(4){
-    animation-delay: 0.30s;
-}.player > span:nth-child(5){
-    animation-delay: 0.40s;
-}.player > span:nth-child(6){
-    animation-delay: 0.50s;
-}.player > span:nth-child(8){
-    animation-delay: 0.60s;
-} */
 :root{
     --player-color: #406882;
     --head-foot-color: #1A374D;
 }
 @media only screen and (max-width: 600px){
+    #divincenter{
+        flex-direction: column;
+        }
+    #reset-btn{
+        width: 100vw;
+        margin-left: 00;
+        margin-right: 00;
+    }
     .head{
         font-size: 47px;
     }
+    .player{
+        font-size: 33px;
+    }
+        /* padding: 100px 0; */
+        
+    .tickBox{
+        width: 93px;
+        height: 93px;
+    }.players{
+      margin: 5px -9px;
+    }
+  .head{
+    margin: 0;
+    height: 80px;
+    width: 100vw;
+  }
 }

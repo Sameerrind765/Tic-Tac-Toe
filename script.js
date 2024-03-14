@@ -1,5 +1,6 @@
-let checkboxes = [];
-let reset_btn = document.getElementById("reset-btn");
+document.addEventListener("DOMContentLoaded",function(){
+    let checkboxes = [];
+    let reset_btn = document.getElementById("reset-btn");
 let logbox = document.getElementById("playerLogs");
 let playerOne = {
     name: 'playerO',
@@ -28,20 +29,34 @@ let current_player = playerOne;
   current_player = (current_player === playerOne) ? playerTwo : playerOne;
   return current_player;
 }
-// console.log(switchPlayer());
 let write = (a,player) => {
     if (!a.innerHTML) {
         a.innerHTML = player.sign;
         switchPlayer();
+        // highlightBet(player);
     } else {
         console.log("Already clicked");
     }
     gamewon(checkboxes);
 };
+function highlightBet(current_player){
+    console.log(current_player);
+    let playerX = document.getElementById("playerX");
+    let playerO = document.getElementById("playerO");
+    
+    if(current_player === playerOne){
+
+        playerO.classList.add('current_Player');
+        playerX.classList.remove('current_Player');
+        console.log("it's me, player X");
+    } else {
+        playerX.classList.add('current_Player');
+        playerO.classList.remove('current_Player');
+    }
+}
 
 function addingEventListenerstoarray(array,sign) {
-    for (let index = 0; index < array.length; index++) {
-        const element = array[index];
+    for (let element of array){
         element.addEventListener("click", function () {
             write(element,current_player);
         });
@@ -50,6 +65,7 @@ function addingEventListenerstoarray(array,sign) {
 
 function winlog(playerLogs, info){
     playerLogs.innerHTML = info;
+    playerLogs.classList.add("current_Player")
 }
 
 let resetBoard = (checkboxes, playerLogs) => {
@@ -58,15 +74,26 @@ let resetBoard = (checkboxes, playerLogs) => {
         checkbox.innerHTML = "";
     });
 };
-function checkTie(playerLogs){
+function removehighlight(current_Player){
+    let playerX = document.getElementById("playerX");
+    let playerO = document.getElementById("playerO");
+        playerX.classList.remove('current_Player');
+        playerO.classList.remove('current_Player');
+}
+function checkTie(playerLogs,current_Player){
     let values = checkboxes.map((checkbox) => checkbox.innerHTML);
         let allNonEmpty = values.every(value => value.trim() !== '');
         if (allNonEmpty) {
-        let info = "Its A Tie"
-        winlog(playerLogs,info)
+            let info = "Its A Tie"
+            winlog(playerLogs,info);
+            removehighlight(current_Player);
+        }
+        else if(allNonEmpty !== checkboxes){
+            highlightBet(current_Player);
         }
 }
-function winlogbox(checkboxes ,n){
+function winlogbox(checkboxes ,n,current_Player){
+    removehighlight(current_Player);
     let winner = checkboxes[n].innerHTML;
     if(winner === "X"){
         let info = "Player One is a winner"
@@ -121,7 +148,8 @@ function gamewon(win) {
         }
     }
     else{
-        checkTie(playerLogs,checkboxes)
+        checkTie(playerLogs,current_player);
+        // highlightBet(current_player);
     }
 }
 
@@ -133,5 +161,8 @@ function starttheGame(){
     let sign = "X"
     assigncheckboxtoarray(checkboxes);  
     addingEventListenerstoarray(checkboxes,sign);
+    highlightBet(checkboxes);
 }
-    starttheGame();   
+highlightBet(checkboxes);    
+starttheGame();   
+})
