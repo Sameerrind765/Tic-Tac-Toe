@@ -26,14 +26,14 @@ let assigncheckboxtoarray = () => {
 
 let current_player = playerOne;
  function switchPlayer(){
-  current_player = (current_player === playerOne) ? playerTwo : playerOne;
+     current_player = (current_player === playerOne) ? playerTwo : playerOne;
+     highlightBet(current_player);
   return current_player;
 }
 let write = (a,player) => {
     if (!a.innerHTML) {
         a.innerHTML = player.sign;
         switchPlayer();
-        // highlightBet(player);
     } else {
         console.log("Already clicked");
     }
@@ -45,7 +45,6 @@ function highlightBet(current_player){
     let playerO = document.getElementById("playerO");
     
     if(current_player === playerOne){
-
         playerO.classList.add('current_Player');
         playerX.classList.remove('current_Player');
         console.log("it's me, player X");
@@ -89,7 +88,7 @@ function checkTie(playerLogs,current_Player){
             removehighlight(current_Player);
         }
         else if(allNonEmpty !== checkboxes){
-            highlightBet(current_Player);
+            // highlightBet(current_Player);
         }
 }
 function winlogbox(checkboxes ,n,current_Player){
@@ -161,8 +160,9 @@ function starttheGame(){
     let sign = "X"
     assigncheckboxtoarray(checkboxes);  
     addingEventListenerstoarray(checkboxes,sign);
-    highlightBet(checkboxes);
+    switchPlayer();
+    // highlightBet(checkboxes);
 }
-highlightBet(checkboxes);    
+// highlightBet(checkboxes);    
 starttheGame();   
 })
